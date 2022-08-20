@@ -279,7 +279,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
           }),
         }),
         H(Field, {
-          label: 'Image 1',
+          label: 'Logo',
           input: H(
             'div',
             H(Dropdown, {
@@ -291,33 +291,33 @@ const App = (_: any, state: AppState, setState: SetState) => {
                 const selected = imageOptions.map((o) => o.value).indexOf(val)
                 setLoadingState({ images: clone, selectedImageIndex: selected })
               },
-            }),
-            H(
-              'div',
-              { className: 'field-flex' },
-              H(TextInput, {
-                value: widths[0],
-                type: 'number',
-                placeholder: 'width',
-                small: true,
-                oninput: (val: string) => {
-                  let clone = [...widths]
-                  clone[0] = val
-                  setLoadingState({ widths: clone })
-                },
-              }),
-              H(TextInput, {
-                value: heights[0],
-                type: 'number',
-                placeholder: 'height',
-                small: true,
-                oninput: (val: string) => {
-                  let clone = [...heights]
-                  clone[0] = val
-                  setLoadingState({ heights: clone })
-                },
-              })
-            )
+            })
+            // H(
+            //   'div',
+            //   { className: 'field-flex' },
+            //   H(TextInput, {
+            //     value: widths[0],
+            //     type: 'number',
+            //     placeholder: 'width',
+            //     small: true,
+            //     oninput: (val: string) => {
+            //       let clone = [...widths]
+            //       clone[0] = val
+            //       setLoadingState({ widths: clone })
+            //     },
+            //   }),
+            //   H(TextInput, {
+            //     value: heights[0],
+            //     type: 'number',
+            //     placeholder: 'height',
+            //     small: true,
+            //     oninput: (val: string) => {
+            //       let clone = [...heights]
+            //       clone[0] = val
+            //       setLoadingState({ heights: clone })
+            //     },
+            //   })
+            // )
           ),
         }),
         ...images.slice(1).map((image, i) =>
