@@ -26,89 +26,101 @@ function getCss(theme: string, fontSize: string) {
     foreground = 'white'
     radial = 'dimgray'
   }
+
   return `
     @font-face {
-        font-family: 'Inter';
-        font-style:  normal;
-        font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
+      font-family: 'Inter';
+      font-style:  normal;
+      font-weight: normal;
+      src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
     }
 
     @font-face {
-        font-family: 'Inter';
-        font-style:  normal;
-        font-weight: bold;
-        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
+      font-family: 'Inter';
+      font-style:  normal;
+      font-weight: bold;
+      src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
     }
 
     @font-face {
-        font-family: 'Vera';
-        font-style: normal;
-        font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
-      }
+      font-family: 'Vera';
+      font-style: normal;
+      font-weight: normal;
+      src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
+    }
+
+    html {
+      height: 100vh;
+    }
 
     body {
-        background: ${background};
-        background-image: radial-gradient(circle at 25px 25px, ${radial} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${radial} 2%, transparent 0%);
-        background-size: 100px 100px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
+      --padding: 100px;
+      background: ${background};
+      background-image: radial-gradient(circle at 25px 25px, ${radial} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${radial} 2%, transparent 0%);
+      background-size: 100px 100px;
+      height: calc(100vh - 2 * var(--padding));
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: space-between;
+      width: calc(100vw - 2 * var(--padding));
+      padding: var(--padding);
     }
 
     code {
-        color: #D400FF;
-        font-family: 'Vera';
-        white-space: pre-wrap;
-        letter-spacing: -5px;
+      color: #007AFF;
+      font-family: 'Vera';
+      white-space: pre-wrap;
+      letter-spacing: -5px;
     }
 
     code:before, code:after {
-        content: '\`';
+      content: '\`';
     }
 
     .logo-wrapper {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        justify-items: center;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      justify-items: center;
     }
 
     .logo {
-        margin: 0 75px;
+      margin: 0 75px;
     }
 
     .main-logo-image {
       align-self: flex-end;
-      margin-top: -70px;
     }
 
     .plus {
-        color: #BBB;
-        font-family: Times New Roman, Verdana;
-        font-size: 100px;
+      color: #BBB;
+      font-family: Times New Roman, Verdana;
+      font-size: 100px;
     }
 
     .emoji {
-        height: 1em;
-        width: 1em;
-        margin: 0 .05em 0 .1em;
-        vertical-align: -0.1em;
+      height: 1em;
+      width: 1em;
+      margin: 0 .05em 0 .1em;
+      vertical-align: -0.1em;
     }
 
     .heading {
-        font-family: 'Inter', sans-serif;
-        font-size: ${sanitizeHtml(fontSize)};
-        font-style: normal;
-        color: ${foreground};
-        line-height: 1.8;
-    }`
+      font-family: 'Inter', sans-serif;
+      font-size: ${sanitizeHtml(fontSize)};
+      font-style: normal;
+      color: ${foreground};
+      line-height: 1.8;
+    }
+
+    .heading * {
+      padding: 0;
+      margin: 0;
+    }
+    `
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
@@ -122,7 +134,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     ${getCss(theme, fontSize)}
   </style>
   <body>
-    ${getImage(images[0], '400px', '400px', 'main-logo-image')}
+    ${getImage(images[0], '296.09px', '128px', 'main-logo-image')}
     <div class="logo-wrapper">
         ${images
           .slice(1)

@@ -62,9 +62,7 @@ function getDefaultImages(images: string[], theme: Theme): string[] {
   if (!images || !images[0]) {
     return [defaultImage]
   }
-  if (
-    !images[0].startsWith('https://jan-mueller.at/')
-  ) {
+  if (!images[0].startsWith('https://jan-mueller.at/')) {
     images[0] = defaultImage
   }
   return images
